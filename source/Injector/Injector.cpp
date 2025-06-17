@@ -56,7 +56,7 @@ public:
                 auto it = localization.find(text.ObjectUUID);
 
                 if (it == localization.cend()) {
-                    std::println("No localization found for {}", text.ObjectUUID);
+                    // std::println("No localization found for {}", text.ObjectUUID);
                     continue;
                 }
 
@@ -66,7 +66,7 @@ public:
                 if (actual == replacement)
                     continue;
 
-                std::println("Replacing text for {}: '{}' -> '{}'", text.ObjectUUID, actual, replacement);
+                // std::println("Replacing text for {}: '{}' -> '{}'", text.ObjectUUID, actual, replacement);
 
                 auto buffer = static_cast<char *>(gMemAlloc(replacement.size()));
                 memcpy(buffer, replacement.data(), replacement.size());
@@ -106,7 +106,7 @@ void Injector::Attach() {
 
     std::ifstream stream{"localization.json"};
     if (stream.fail()) {
-        std::println("Failed to open localization file 'localization.json'");
+        // std::println("Failed to open localization file 'localization.json'");
         return;
     }
 
@@ -116,16 +116,15 @@ void Injector::Attach() {
     for (auto it = json.cbegin(); it != json.cend(); ++it) {
         auto guid = GGUUID::Parse(it.key());
         auto text = it.value().get<std::string>();
-        localization.emplace(std::move(guid), std::move(text));
+        localization.emplace(guid, std::move(text));
     }
 
-    std::println("Loaded {} localization entries", localization.size());
+    // std::println("Loaded {} localization entries", localization.size());
 }
 
 void Injector::Detach() {
     DetourTransactionBegin();
     DetourUpdateThread(GetCurrentThread());
-    DetourDetach(reinterpret_cast<PVOID *>(&RTTIFactory_RegistersSymbols),
-                 static_cast<PVOID>(RTTIFactory_RegistersSymbols_Hook));
+    DetourDetach(reinterpret_cast<PVOID *>(&RTTIFactory_RegistersSymbols), static_cast<PVOID>(RTTIFactory_RegistersSymbols_Hook));
     DetourTransactionCommit();
 }

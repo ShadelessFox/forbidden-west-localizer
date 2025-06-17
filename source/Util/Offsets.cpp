@@ -57,7 +57,7 @@ namespace Offsets {
         if (found != OffsetMapping.end())
             throw std::runtime_error("Trying to map an address that was previously mapped");
 
-        std::println("Mapped {} to address {}", ID, reinterpret_cast<void *>(Offset));
+        // std::println("Mapped {} to address {}", ID, reinterpret_cast<void *>(Offset));
 
         OffsetMapping.emplace(hash, Offset);
     }
