@@ -13,12 +13,11 @@ add_library(hfw_localizer SHARED
         source/Injector/Injector.cpp
         source/Util/Offsets.cpp
         source/Util/XUtil.cpp
-        source/winhttp.c
         source/dllmain.cpp
 )
 
 target_include_directories(hfw_localizer PRIVATE source)
-target_link_libraries(hfw_localizer PRIVATE detours nlohmann_json::nlohmann_json)
+target_link_libraries(hfw_localizer PRIVATE detours nlohmann_json::nlohmann_json quickdllproxy)
 set_target_properties(hfw_localizer PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 IF (NOT ${GAME_ROOT_DIRECTORY} STREQUAL "")

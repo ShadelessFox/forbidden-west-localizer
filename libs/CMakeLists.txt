@@ -15,3 +15,6 @@ target_include_directories(detours PUBLIC detours/src)
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set(JSON_Install OFF CACHE INTERNAL "")
 add_subdirectory(json)
+
+add_library(quickdllproxy INTERFACE)
+target_include_directories(quickdllproxy INTERFACE quickdllproxy/include)
