@@ -44,4 +44,4 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          path: %BUILD_TYPE%/winhttp.dll
+          path: $BUILD_TYPE/winhttp.dll
