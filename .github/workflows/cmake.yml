@@ -36,9 +36,9 @@ jobs:
       - name: Prepare artifact
         working-directory: ${{runner.workspace}}/build
         shell: cmd
-        run: move hfw_localizer.dll winhttp.dll
+        run: move %BUILD_TYPE%/hfw_localizer.dll %BUILD_TYPE%/winhttp.dll
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          path: winhttp.dll
+          path: %BUILD_TYPE%/winhttp.dll
