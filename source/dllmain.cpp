@@ -1,5 +1,4 @@
 #include <Windows.h>
-#include <cstdio>
 
 #include "Injector/Injector.h"
 
@@ -8,16 +7,10 @@
     (void) reserved;
 
     if (reason == DLL_PROCESS_ATTACH) {
-        AllocConsole();
-        AttachConsole(ATTACH_PARENT_PROCESS);
-        freopen("CON", "w", stdout);
-
         Injector::Attach();
     }
 
     if (reason == DLL_PROCESS_DETACH) {
-        FreeConsole();
-
         Injector::Detach();
     }
 
