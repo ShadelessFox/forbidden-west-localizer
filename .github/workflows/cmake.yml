@@ -32,3 +32,13 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         shell: cmd
         run: cmake --build . --config %BUILD_TYPE%
+
+      - name: Prepare artifact
+        working-directory: ${{runner.workspace}}/build
+        shell: cmd
+        run: move hfw_localizer.dll winhttp.dll
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: winhttp.dll
