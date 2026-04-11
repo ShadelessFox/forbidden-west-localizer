@@ -1,6 +1,6 @@
 # Localization mod for Horizon Forbidden West
 
-### Installation
+## Installation
 
 1. Download the latest release from the [releases page](https://github.com/ShadelessFox/forbidden-west-localizer/releases/latest)
 2. Copy `winhttp.dll` and `localization.json` files to the game's root directory
@@ -16,3 +16,19 @@ Example `localization.json` file:
 }
 ```
 It will change the text "New Game" to "💥 Begin a new adventure" in the main menu.
+
+## References
+
+This software wouldn't have been possible without the contributions of other people.
+It was directly inspired by, and contains code borrowed from the following software:
+- https://github.com/Nukem9/HZDCoreEditor, by [Nukem9](https://github.com/Nukem9)
+- https://github.com/Nukem9/hfw-gameplay-tweaks, by [Nukem9](https://github.com/Nukem9)
+- https://github.com/Nukem9/QuickDllProxy, licensed under LGPL-3.0, by [Nukem9](https://github.com/Nukem9)
+
+## License
+
+This software is licensed under the GPL-3.0 license.
+
+This software is not sponsored by or related to Guerrilla Games, Kojima Productions, Sony Interactive Entertainment, or others.
+
+Source code and all software made with Decima engine belong to their developers.
